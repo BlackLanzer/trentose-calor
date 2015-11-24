@@ -15,6 +15,7 @@ var view = {
 
 	cityTemplate : "<option value='ph_city'>ph_city</option>",
 
+	// imposta la combo box per le città
 	setCities : function(cities) {
 		$("#city").html("");
 		for (var i = 0; i < cities.length; i++) {
@@ -24,6 +25,7 @@ var view = {
 		}
 	},
 
+	// aggiunge il meteo del giorno
 	addDay : function(day, min, max, condition) {
 		var dayLi = this.dayTemplate.replace("ph_day",day)
 					.replace("ph_min",min)
@@ -34,6 +36,7 @@ var view = {
 };
 
 var model = {
+	// ritorna un array con i dati di una certa città
 	getCityData : function(city) {
 		var cityData = [];
 		var j=0;
@@ -80,6 +83,7 @@ var model = {
 		}
 	},
 
+	// ritorna un array con i giorni presenti nei dati
 	getDays : function(city) {
 		var data = this.getCityData(city);
 		var days = [];
@@ -94,6 +98,7 @@ var model = {
 		return days;
 	},
 
+	// ritorna un array con le città presenti nei dati
 	getCities : function() {
 		var cities = [];
 		var j = 0;
@@ -118,6 +123,7 @@ var controller = {
 		
 	},
 
+	// carica il meteo di una certa città
 	showSummary : function(city) {
 		this.days = model.getDays(city);
 		$("#summary").html("");
